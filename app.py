@@ -52,13 +52,13 @@ def guestbook_post():
         'name':name_receive,
         'comment':comment_receive
     }
-    db.fan.insert_one(doc)
+    db.festival.insert_one(doc)
     
     return jsonify({'msg': '저장완료!'})
 
 @app.route("/guestbook", methods=["GET"])
 def guestbook_get():
-    all_comments = list(db.fan.find({},{'_id':False}))
+    all_comments = list(db.festival.find({},{'_id':False}))
     return jsonify({'result':all_comments})
 
 if __name__ == '__main__':

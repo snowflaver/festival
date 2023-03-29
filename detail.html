@@ -87,20 +87,6 @@
             display: none;
         }
 
-        .mybtns {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-
-            margin-top: 20px;
-        }
-
-        .mybtns>button {
-            margin-right: 10px;
-        }
-
-       
        
 
         * {
@@ -165,15 +151,14 @@
                                             <div class="col">
                                                 <div class="card h-100">
                                                     <div class="card-body">
-                                                        <h5 class="card-title">월/지역</h5>
-                                                        <p class="card-text">소개링크</p>
-                                                        <p class="card-text">축제 이름</p>
-                                                        <p class="mycomment">설명</p>
+                                                        <h5 class="card-title">축제이름</h5>
+                                                        <p class="card-text">장소</p>
+                                                        <p class="card-text">기간</p>
+                                                        <p class="mycomment">설명 / 홈페이지</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
                                         
                                         </div>`
                     $('#cards-box').append(temp_html)
@@ -197,13 +182,7 @@
             })
         }
 
-        function open_box() {
-            $('#post-box').show()
-        }
-        function close_box() {
-            $('#post-box').hide()
-        }
-
+       
 
         $(document).ready(function () {
         set_temp();
@@ -226,11 +205,13 @@
       }
       function show_comment() {
         fetch('/guestbook').then((res) => res.json()).then((data) => {
-						let rows=data['result']
+			let rows=data['result']
+
             $('#comment-list').empty()
             rows.forEach((a)=>{
               let name=a['name']
               let comment=a['comment']
+
 
               let temp_html=`<div class="card">
                               <div class="card-body">
@@ -247,8 +228,6 @@
 
 
 
-
-
     </script>
 </head>
 
@@ -256,29 +235,16 @@
     <div class="mytitle">
         <h1>축제로구나</h1>
     </div>
-    <div class="mypost" id="post-box">
-        <div class="form-floating mb-3">
-            <input id="url" type="email" class="form-control" placeholder="name@example.com">
-            <label>영화URL</label>
-        </div>
 
+    <div class="mypost" id="post-box">
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">별점</label>
             <select class="form-select" id="star">
                 <option selected>-- 선택하기 --</option>
-                <option value="1">⭐</option>
-                <option value="2">⭐⭐</option>
-                <option value="3">⭐⭐⭐</option>
-                <option value="4">⭐⭐⭐⭐</option>
-                <option value="5">⭐⭐⭐⭐⭐</option>
             </select>
         </div>
 
 
-        <div class="mybtns">
-            <button onclick="posting()" type="button" class="btn btn-dark">기록하기</button>
-            <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>
-        </div>
     </div>
    <div class="myfest">
     <div class="mycards">
