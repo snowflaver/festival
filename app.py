@@ -12,10 +12,9 @@ from bs4 import BeautifulSoup
 def home():
     return render_template('detail.html')
 
-@app.route("/movie", methods=["POST"])
+@app.route("/festival", methods=["POST"])
 def movie_post():
     url_receive = request.form['url_give']
-    star_receive=request.form['star_give']
 
 
     headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
@@ -31,18 +30,17 @@ def movie_post():
         'title':ogtitle,
         'desc':ogdesc,
         'image':ogimage,
-        'star':star_receive
     }
 
-    db.movies.insert_one(doc)
+    db.festival.insert_one(doc)
     
     return jsonify({'msg':'저장완료!'})
 
-@app.route("/movie", methods=["GET"])
-def movie_get():
+@app.route("/festival", methods=["GET"])
+def festival_get():
 
-    all_movies = list(db.movies.find({},{'_id':False}))
-    return jsonify({'result':all_movies})
+    all_festival = list(db.festival.find({},{'_id':False}))
+    return jsonify({'result':all_festival})
 
 @app.route("/guestbook", methods=["POST"])
 def guestbook_post():
@@ -57,6 +55,7 @@ def guestbook_post():
     return jsonify({'msg': '저장완료!'})
 
 @app.route("/guestbook", methods=["GET"])
+
 def guestbook_get():
     all_comments = list(db.festival.find({},{'_id':False}))
     return jsonify({'result':all_comments})

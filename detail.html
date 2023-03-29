@@ -121,8 +121,6 @@
 
 
 
-
-
     </style>
     <script>
         $(document).ready(function () {
@@ -130,7 +128,7 @@
         });
 
         function listing() {
-            fetch('/movie').then((res) => res.json()).then((data) => {
+            fetch('/festival').then((res) => res.json()).then((data) => {
                 let rows = data['result']
                 $('#cards-box').empty()
 
@@ -144,7 +142,6 @@
                                                         class="card-img-top">
                                                     <div class="card-body">
                                                         <button onclick="open_box()">가고싶어요</button>
-                                                        <p class="like">${star}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -169,13 +166,11 @@
 
         function posting() {
             let url = $('#url').val()
-            let star = $('#star').val()
 
             let formData = new FormData();
             formData.append("url_give", url);
-            formData.append("star_give", star);
 
-            fetch('/movie', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {
+            fetch('/festival', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {
 
                 alert(data['msg'])
                 window.location.reload()
