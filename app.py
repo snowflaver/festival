@@ -32,6 +32,12 @@ import hashlib
 def login():
     return render_template('index.html')
 
+@app.route('/sign_up/checkDup', methods=['POST'])
+def check_dup():
+    id_receive = request.form['id']
+    exists = bool(db.user.find_one({"id": id_receive}))
+    return jsonify({'result': 'success', 'exists': exists})
+
 @app.route('/api/main')
 def home():
     token_receive = request.cookies.get('mytoken')
@@ -44,17 +50,6 @@ def home():
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
-
-
-@app.route('/login')
-def login():
-    msg = request.args.get("msg")
-    return render_template('login.html', msg=msg)
-
-
-@app.route('/register')
-def register():
-    return render_template('register.html')
 
 
 #################################
