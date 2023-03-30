@@ -59,7 +59,7 @@
 
 
     .myfest {
-      background-color: aqua;
+      background-color: yellow;
       margin: 20px auto 0px auto;
       width: 95%;
       align-items: center;
@@ -85,11 +85,6 @@
       display: none;
     }
 
-
-
-    * {
-      font-family: "Noto Serif KR", serif;
-    }
 
 
     .mypost1 {
@@ -129,16 +124,19 @@
         $('#cards-box').empty()
 
         fetch("http://api.data.go.kr/openapi/tn_pubr_public_cltur_fstvl_api?serviceKey=UHJ3sDYi2evKsyac0dnwdliA7%2Fo0%2Bqv6CdI%2BFUfXvDySc29Lmayp1gdicJ%2FD7rcam%2Bc2MezDM9fWJH0V3QQexw%3D%3D&pageNo=0&numOfRows=100&type=json").then(res => res.json()).then(data => {
-          let rows = data['response']['body']['items']
+          let itemss = data['response']['body']['items']
 
-          let fest_name = rows[0]['fstvlNm']
-          let fest_spot = rows[0]['opar']
-          let fest_start = rows[0]['fstvlStartDate']
-          let fest_end = rows[0]['fstvlEndDate']
-          let fest_location = rows[0]['rdnmadr']
-          let fest_phone = rows[0]['phoneNumberr']
-          let fest_web = rows[0]['homepageUrl']
+          let fest_name = itemss[0]['fstvlNm']
+          let fest_spot = itemss[0]['opar']
+          let fest_start = itemss[0]['fstvlStartDate']
+          let fest_end = itemss[0]['fstvlEndDate']
+          let fest_location = itemss[0]['rdnmadr']
+          let fest_phone = itemss[0]['phoneNumberr']
+          let fest_web = itemss[0]['homepageUrl']
 
+          console.log(fest_name)
+
+          
 
         })
 
@@ -174,23 +172,8 @@
 
     }
 
-    function posting() {
-      let url = $('#url').val()
-
-      let formData = new FormData();
-      formData.append("url_give", url);
-
-      fetch('/festival', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {
-
-        alert(data['msg'])
-        window.location.reload()
-      })
-    }
-
-
-
+    
     $(document).ready(function () {
-      set_temp();
       show_comment();
     });
 
@@ -241,16 +224,6 @@
     <h1>축제로구나</h1>
   </div>
 
-  <div class="mypost" id="post-box">
-    <div class="input-group mb-3">
-      <label class="input-group-text" for="inputGroupSelect01">별점</label>
-      <select class="form-select" id="star">
-        <option selected>-- 선택하기 --</option>
-      </select>
-    </div>
-
-
-  </div>
   <div class="myfest">
     <div class="mycards">
       <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
@@ -259,8 +232,7 @@
             <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
               class="card-img-top">
             <div class="card-body">
-              <h5 class="card-title">방문해봤어요</h5>
-              <p class="card-text">방문하고싶어요</p>
+              <h5 class="card-title">가고싶어요</h5>
             </div>
           </div>
         </div>
@@ -296,24 +268,24 @@
       <div class="card">
         <div class="card-body">
           <blockquote class="blockquote mb-0">
-            <p>새로운 앨범 너무 멋져요!</p>
-            <footer class="blockquote-footer">호빵맨</footer>
+            <p>주말이 기다려집니다</p>
+            <footer class="blockquote-footer">봄봄</footer>
           </blockquote>
         </div>
       </div>
       <div class="card">
         <div class="card-body">
           <blockquote class="blockquote mb-0">
-            <p>새로운 앨범 너무 멋져요!</p>
-            <footer class="blockquote-footer">호빵맨</footer>
+            <p>빨리가고싶어요!</p>
+            <footer class="blockquote-footer">빨리</footer>
           </blockquote>
         </div>
       </div>
       <div class="card">
         <div class="card-body">
           <blockquote class="blockquote mb-0">
-            <p>새로운 앨범 너무 멋져요!</p>
-            <footer class="blockquote-footer">호빵맨</footer>
+            <p>날씨가좋아요</p>
+            <footer class="blockquote-footer">굿맨</footer>
           </blockquote>
         </div>
       </div>
