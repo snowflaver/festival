@@ -8,12 +8,14 @@ db = client.dbsparta
 import requests
 from bs4 import BeautifulSoup
 
+
+
 @app.route('/')
 def home():
     return render_template('detail.html')
 
 @app.route("/festival", methods=["POST"])
-def movie_post():
+def festival_post():
     url_receive = request.form['url_give']
 
 
