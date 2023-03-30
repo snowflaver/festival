@@ -138,7 +138,7 @@
 
           
 
-        })
+        
 
 
         let temp_html = `<div class="myfest">
@@ -156,8 +156,8 @@
                                             <div class="col">
                                                 <div class="card h-100">
                                                     <div class="card-body">
-                                                        <h5 class="card-title">축제이름</h5>
-                                                        <p class="card-text">장소</p>
+                                                        <h5 class="card-title">${fest_name}</h5>
+                                                        <p class="card-text">${fest_spot}</p>
                                                         <p class="card-text">기간</p>
                                                         <p class="mycomment">설명 / 홈페이지</p>
                                                     </div>
@@ -167,7 +167,7 @@
                                         
                                         </div>`
         $('#cards-box').append(temp_html)
-
+      })
       })
 
     }
@@ -236,17 +236,7 @@
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">월/지역</h5>
-              <p class="card-text">축제 이름</p>
-              <p>설명</p>
-            </div>
-          </div>
-        </div>
       </div>
-
     </div>
 
 
