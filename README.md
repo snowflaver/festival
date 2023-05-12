@@ -30,5 +30,7 @@ function Mainlogin() {
 export default Mainlogin;
 ```
 이렇게 구성햇는데
+
 ![image](https://github.com/snowflaver/trubleshot/assets/121342379/84349390-b9f6-415a-88f7-8b6371619fe6)
+
 이렇게 `<Login />`과 `<Stringsignupbutton />`사이가 안좁혀진다....
