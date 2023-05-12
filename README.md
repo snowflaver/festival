@@ -1,8 +1,34 @@
-# festival
-목표-CSS 제외 index_html 뼈대 완성하기💪
+# 트러블
+### 2023- 05- 12
+```
+import styled from "styled-components";
 
-월 또는 지역 중의 적용할 api자료에서 명확히 구분되는 거 하나로 통일
+const Backarea = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+padding-top: 20px;
+`
 
-첫 페이지 로그인/가입 클릭시 희준님이 구현하신 로그인/가입 페이지로의 이동
-->로그인 -> 첫 페이지로 이동
-->가입 -> 로그인 페이지 -> 첫페이지
+export { Backarea }
+```
+해당 스타일을
+```
+import React from "react";
+//...
+
+function Mainlogin() {
+  return (
+    <Backarea>
+      <Login />
+      <Stringsignupbutton />
+    </Backarea>
+  )
+}
+
+export default Mainlogin;
+```
+이렇게 구성햇는데
+![image](https://github.com/snowflaver/trubleshot/assets/121342379/84349390-b9f6-415a-88f7-8b6371619fe6)
+이렇게 `<Login />`과 `<Stringsignupbutton />`사이가 안좁혀진다....
