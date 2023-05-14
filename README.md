@@ -67,3 +67,27 @@ export default Mainlogin;
 ```
 이 코드처럼 블록끼리 붙이고 있어서 뭘하려해고 블록과 블록으로 가지고 하는것이엇기에
 <Stringsignupbutton />이것을 <Login />안에 집어넣엇더니 해결이 되엇다...!
+
+### 2023- 05 - 14
+
+에러 메세지 구현을 해결햇다.
+간단한 문제엿다.
+먼저 서버api로부터 response값을 어떻게 받아오는지부터 console을 찍어보고 해당하는값을 설정해주고 출력만 해주면 되는것이엇다.
+
+![image](https://github.com/snowflaver/trubleshot/assets/121342379/c398e6c6-bbda-4e75-8205-74a4892e7474)
+
+서버에서 에러를 이렇게 response에 담아주고잇엇고 이걸 확인안하고 유효성 검사를 토대로 에러메세지를 구현하려고 해서 힘들어햇던거다.
+물론 클라이언트에서 유효성 검사를 토대로 구현은 가능하지만 지금의 나는 서버에서 에러를 받아올때 거기에 맞는 에러메세지를 클라이언트에서 수정해서 구현하는 법을 아직 모른다.
+결론을 말하자면 이렇다는거고
+해결한 부분을 보여준다면
+```
+onError: (error) => {
+        setErrorMessage1(error.response.data.message)
+      }
+```
+이렇게 response에서 띄우고자하는 메세지를 잡아서
+버튼밑으로 추가를 해주엇다.
+
+![image](https://github.com/snowflaver/trubleshot/assets/121342379/2a9a6605-35ea-42e3-8b69-40b4ba74e7fd)
+
+이와 같이 해결이 되엇다.
